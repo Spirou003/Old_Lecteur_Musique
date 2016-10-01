@@ -1,0 +1,33 @@
+# Project: Lecteur de Musique
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = Lecteur_de_Musique_private.res
+OBJ  = "Lecteur\ de\ Musique.o" $(RES)
+LINKOBJ  = "Lecteur de Musique.o" $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" -L"C:/Dev-Cpp/lib/PJ_lib" -mwindows -lmingw32 -lSDLmain -lSDL libfmod.a SDL_image.lib  
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+BIN  = "Lecteur de Musique.exe"
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before "Lecteur de Musique.exe" all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "Lecteur de Musique.exe" $(LIBS)
+
+"Lecteur\ de\ Musique.o": Lecteur\ de\ Musique.c
+	$(CC) -c "Lecteur de Musique.c" -o "Lecteur de Musique.o" $(CFLAGS)
+
+Lecteur_de_Musique_private.res: Lecteur_de_Musique_private.rc 
+	$(WINDRES) -i Lecteur_de_Musique_private.rc --input-format=rc -o Lecteur_de_Musique_private.res -O coff 
